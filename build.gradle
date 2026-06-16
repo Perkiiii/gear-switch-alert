@@ -32,3 +32,14 @@ tasks.withType(JavaCompile) {
 	sourceCompatibility = 10
 	targetCompatibility = 10
 }
+
+tasks.register('run', JavaExec) {
+    group = 'runelite'
+    description = 'Runs RuneLite with Gear Switch Alert loaded as a development plugin.'
+
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass.set('com.gearswitch.GearSwitchAlertPluginTest')
+
+    enableAssertions = true
+    args '--developer-mode', '--debug'
+}
